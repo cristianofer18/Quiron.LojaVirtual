@@ -9,11 +9,16 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 {
     public class ProdutosRepositorio
     {
-        private EfDbContext _context;
+        private readonly EfDbContext _context = new EfDbContext();
 
-        public IEnumerable<Produto> GetProdutos()
-        {             
-             return from produtos in _context.Produtos select produtos;
+        //public IEnumerable<Produto> GetProdutos()
+        //{
+        //    return from produtos in _context.Produtos select produtos;
+        //}
+
+        public IEnumerable<Produto> GetProdutos
+        {
+            get { return _context.Produtos; }
         }
 
     }

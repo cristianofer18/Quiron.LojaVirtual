@@ -10,7 +10,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
     {
         public Int32 ProdutoId { get; set; }
 
-        public String NomeProduto { get; set; }
+        public String Nome { get; set; }
 
         public String Descricao { get; set; }
 
