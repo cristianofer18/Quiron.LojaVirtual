@@ -21,13 +21,13 @@ namespace Quiron.LojaVirtual.Web.Controllers
             var viewModel = new ProdutosViewModel
             {
                 Produtos = _repositorio.GetProdutos.OrderBy(p => p.Descricao)
-                .Where(p => p.Categoria == null || p.Categoria == categoria)
+                .Where(p => categoria == null || p.Categoria == categoria)
                 .Skip((pagina - 1) * ProdutosPorPagina).Take(ProdutosPorPagina),
                 Paginacao = new Paginacao
                 {
                     PaginaAtual = pagina,
                     ItensPorPagina = ProdutosPorPagina,
-                    ItensTotal = _repositorio.GetProdutos.Count()
+                    ItensTotal = categoria == null ? _repositorio.GetProdutos.Count() : _repositorio.GetProdutos.Where(p => p.Categoria == categoria).Count()
                 },
                 CategoriaAtual = categoria
             };

@@ -35,13 +35,15 @@ namespace Quiron.LojaVirtual.Web
                 defaults: new { controller = "Vitrine", action = "ListaProdutos", pagina = 1 }
                 );
 
-            //3 rota
+            //4 rota
 
             routes.MapRoute(
                null,
-               "{categoria}Pagina{pagina}",
+               "{categoria}/Pagina{pagina}",
                new { controller = "Vitrine", action = "ListaProdutos"}, new {pagina = @"\d+" }
            );
+
+            routes.MapRoute(null, "{controller}/{action}" );
 
             //routes.MapRoute(
             //    name: "Default",
